@@ -1,0 +1,61 @@
+import { CorePlugin } from './core.ht'
+
+class TrackEndpoint {
+  var client: HttpClient
+
+  construct (this.client)
+
+  // Failover mechanism helper loop without catch/catchError
+  fun _fetchRecursively(instances: List, index: int, buildUrl: fun) {
+    if (index >= instances.length) {
+      // Loop finished and no successful instance was found.
+      // Usually Spotube will catch an empty return or handled format.
+      return Future.value(null)
+    }
+
+    var requestUrl = buildUrl(instances[index])
+    
+    return client.get(requestUrl).then((response) => {
+      // Hetu_std HttpClient response structure usually contains statusCode
+      if (response != null && response.statusCode == 200) {
+        return response.data
+      } else {
+        // Failover to the next instance
+        return _fetchRecursively(instances, index + 1, buildUrl)
+      }
+    })
+  }
+
+  fun getTrack(id: string) {
+    // Actually Spotube handles the normal getTrack, but wait, 
+    // the user might want us to return the stream directly, or just metadata
+    // based on ISRC or ID?
+    // Spotube plugins mostly return SpotubeFullTrackObject
+    return null
+  }
+
+  // To fetch streaming payload using failover
+  fun fetchStream(isrc: string, trackId: string) {
+    var buildUrlFunc = (instanceUrl) => "${instanceUrl}/track/?id=${trackId}&quality=LOSSLESS"
+    
+    var instances = CorePlugin.STREAMING_INSTANCES
+    if (CorePlugin.ActiveInstance != "") {
+        instances = [CorePlugin.ActiveInstance]
+    }
+
+    // Example of calling the failover mechanism:
+    return _fetchRecursively(instances, 0, buildUrlFunc).then((data) => {
+        if (data != null) {
+            // Process the stream link payload here and return what Spotube expects
+            return data
+        }
+        return null
+    })
+  }
+
+  fun save(trackIds: List) { }
+
+  fun unsave(trackIds: List) { }
+
+  fun radio(id: string) { }
+}

@@ -1,0 +1,30 @@
+import { AuthEndpoint } from './segments/auth.ht'
+import { CorePlugin } from './segments/core.ht'
+import { TrackEndpoint } from './segments/track.ht'
+// Import other empty placeholders or actual implementations
+class MonochromePlugin {
+  var track: TrackEndpoint
+  // Add other required fields as placeholders
+  var auth: AuthEndpoint
+  var core: CorePlugin
+  var album: any
+  var artist: any
+  var browse: any
+  var playlist: any
+  var search: any
+  var user: any
+
+  var api: HttpClient
+
+  construct (){
+    api = HttpClient(
+      HttpBaseOptions()
+    )
+
+    core = CorePlugin(api)
+    auth = AuthEndpoint(api)
+    track = TrackEndpoint(api)
+    
+    // Initialize others as null or dummy if not implementing yet
+  }
+}
