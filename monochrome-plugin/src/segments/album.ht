@@ -1,9 +1,0 @@
-class AlbumEndpoint {
-  var client: HttpClient
-  construct (this.client)
-  fun getAlbum(id: string) { return null }
-  fun tracks(id: string, options: any) { return null }
-  fun releases(options: any) { return null }
-  fun save(albumIds: List) { }
-  fun unsave(albumIds: List) { }
-}

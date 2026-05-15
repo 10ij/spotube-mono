@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0",
+  "name": "monochrome",
+  "author": "Ismail",
+  "description": "Monochrome audio provider",
+  "entryPoint": "TemplateMetadataProviderPlugin",
+  "apis": [],
+  "abilities": ["audioSource"],
+  "repository": "https://github.com/KRTirtho/spotube-plugin-template",
+  "pluginApiVersion": "2.0.0"
+}
+
