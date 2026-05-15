@@ -1,18 +1,23 @@
 import { AuthEndpoint } from './segments/auth.ht'
 import { CorePlugin } from './segments/core.ht'
 import { TrackEndpoint } from './segments/track.ht'
-// Import other empty placeholders or actual implementations
+import { AlbumEndpoint } from './segments/album.ht'
+import { ArtistEndpoint } from './segments/artist.ht'
+import { BrowseEndpoint } from './segments/browse.ht'
+import { PlaylistEndpoint } from './segments/playlist.ht'
+import { SearchEndpoint } from './segments/search.ht'
+import { UserEndpoint } from './segments/user.ht'
+
 class MonochromePlugin {
   var track: TrackEndpoint
-  // Add other required fields as placeholders
   var auth: AuthEndpoint
   var core: CorePlugin
-  var album: any
-  var artist: any
-  var browse: any
-  var playlist: any
-  var search: any
-  var user: any
+  var album: AlbumEndpoint
+  var artist: ArtistEndpoint
+  var browse: BrowseEndpoint
+  var playlist: PlaylistEndpoint
+  var search: SearchEndpoint
+  var user: UserEndpoint
 
   var api: HttpClient
 
@@ -24,7 +29,11 @@ class MonochromePlugin {
     core = CorePlugin(api)
     auth = AuthEndpoint(api)
     track = TrackEndpoint(api)
-    
-    // Initialize others as null or dummy if not implementing yet
+    album = AlbumEndpoint(api)
+    artist = ArtistEndpoint(api)
+    browse = BrowseEndpoint(api)
+    playlist = PlaylistEndpoint(api)
+    search = SearchEndpoint(api)
+    user = UserEndpoint(api)
   }
 }

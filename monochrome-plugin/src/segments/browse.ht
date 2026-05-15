@@ -1,0 +1,8 @@
+class BrowseEndpoint {
+  var client: HttpClient
+  construct (this.client)
+  fun newReleases(options: any) { return null }
+  fun featuredPlaylists(options: any) { return null }
+  fun categories(options: any) { return null }
+  fun categoryPlaylists(categoryId: string, options: any) { return null }
+}

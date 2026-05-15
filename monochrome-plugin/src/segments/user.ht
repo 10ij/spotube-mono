@@ -1,0 +1,13 @@
+class UserEndpoint {
+  var client: HttpClient
+  construct (this.client)
+  fun me() { return null }
+  fun savedTracks(options: any) { return null }
+  fun savedPlaylists(options: any) { return null }
+  fun savedAlbums(options: any) { return null }
+  fun savedArtists(options: any) { return null }
+  fun isSavedPlaylist(id: string) { return Future.value(false) }
+  fun isSavedTracks(ids: List) { return Future.value([]) }
+  fun isSavedAlbums(ids: List) { return Future.value([]) }
+  fun isSavedArtists(ids: List) { return Future.value([]) }
+}

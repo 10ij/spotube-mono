@@ -1,0 +1,5 @@
+class SearchEndpoint {
+  var client: HttpClient
+  construct (this.client)
+  fun search(query: string, options: any) { return null }
+}

@@ -1,0 +1,10 @@
+class ArtistEndpoint {
+  var client: HttpClient
+  construct (this.client)
+  fun getArtist(id: string) { return null }
+  fun albums(id: string, options: any) { return null }
+  fun topTracks(id: string) { return null }
+  fun relatedArtists(id: string) { return null }
+  fun save(artistIds: List) { }
+  fun unsave(artistIds: List) { }
+}
